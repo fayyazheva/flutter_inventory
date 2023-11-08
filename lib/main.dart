@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Mochi Pachill',
       theme: ThemeData(
         // This is the theme of your application.
         //
@@ -30,7 +30,8 @@ class MyApp extends StatelessWidget {
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
         appBarTheme: AppBarTheme(
-          backgroundColor: Colors.indigo, // Atur warna AppBar di sini
+          backgroundColor:
+              Color.fromARGB(255, 185, 180, 199), // Atur warna AppBar di sini
         ),
         useMaterial3: true,
 
