@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
         // tested with just a hot reload.
         appBarTheme: AppBarTheme(
           backgroundColor:
-              Color.fromARGB(255, 185, 180, 199), // Atur warna AppBar di sini
+              Color.fromARGB(255, 166, 190, 210), // Atur warna AppBar di sini
         ),
         useMaterial3: true,
 

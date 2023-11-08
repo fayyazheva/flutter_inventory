@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 class MyHomePage extends StatelessWidget {
   MyHomePage({Key? key}) : super(key: key);
   final List<ShopItem> items = [
-    ShopItem("Lihat Item", Icons.checklist),
-    ShopItem("Tambah Produk", Icons.add_shopping_cart),
-    ShopItem("Logout", Icons.logout),
+    ShopItem("Lihat Item", Icons.checklist, Color.fromARGB(255, 150, 126, 118)),
+    ShopItem("Tambah Produk", Icons.add_shopping_cart,
+        Color.fromARGB(255, 215, 192, 174)),
+    ShopItem("Logout", Icons.logout, Color.fromARGB(255, 238, 227, 203)),
   ];
+
   // This widget is the home page of your application. It is stateful, meaning
   // that it has a State object (defined below) that contains fields that affect
   // how it looks.
@@ -68,8 +70,9 @@ class MyHomePage extends StatelessWidget {
 class ShopItem {
   final String name;
   final IconData icon;
+  final Color color;
 
-  ShopItem(this.name, this.icon);
+  ShopItem(this.name, this.icon, this.color);
 }
 
 class ShopCard extends StatelessWidget {
@@ -80,7 +83,7 @@ class ShopCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Material(
-      color: Color.fromARGB(255, 92, 84, 112),
+      color: item.color,
       child: InkWell(
         // Area responsive terhadap sentuhan
         onTap: () {
