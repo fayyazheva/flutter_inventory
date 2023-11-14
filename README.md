@@ -1,3 +1,4 @@
+==========================TUGAS 7==========================
 1. Apa perbedaan utama antara stateless dan stateful widget dalam konteks pengembangan aplikasi Flutter?
 
 stateless:
@@ -125,4 +126,142 @@ Sebutkan seluruh widget yang kamu gunakan untuk menyelesaikan tugas ini dan jela
             git push -u origin (nama branch yang telah dibuat sebelumnya)
 
 
+==========================TUGAS 8==========================
 
+  
+
+**1. Jelaskan perbedaan antara Navigator.push() dan Navigator.pushReplacement(), disertai dengan contoh mengenai penggunaan kedua metode tersebut yang tepat!**
+
+ - Metode Navigator.push() digunakan untuk menambahkan halaman baru ke tumpukan navigasi.Saat menggunakan Navigator.push(), halaman yang baru ditambahkan ke atas halaman saat ini pada tumpukan navigasi.
+	 - Hal ini berarti jika pengguna menekan tombol "Kembali" pada halaman baru, mereka akan kembali ke halaman sebelumnya dalam tumpukan navigasi.
+	 - Contoh penggunaan Navigator.push():
+
+// Navigasi ke halaman baru
+Navigator.push(
+	context,
+	MaterialPageRoute(builder: (context) => SecondScreen()),
+);
+Navigator.pushReplacement():
+
+ - Metode Navigator.pushReplacement() digunakan untuk menambahkan halaman baru ke tumpukan navigasi, tetapi jika menggunakan Navigator.pushReplacement(), halaman saat ini dalam tumpukan navigasi akan digantikan oleh halaman baru yang ditambahkan.
+	 - Hal ini berarti jika pengguna menekan tombol "Kembali" pada halaman baru, mereka tidak akan kembali ke halaman sebelumnya dalam tumpukan navigasi, melainkan langsung keluar dari halaman baru tersebut.
+	 - Contoh penggunaan Navigator.pushReplacement():
+	 // Navigasi ke halaman baru dan menggantikan halaman saat ini
+		Navigator.pushReplacement(
+			context,
+			MaterialPageRoute(builder: (context) => ThirdScreen()),
+		);
+		
+ - Contoh Penggunaan:
+	 Misalkan kita memiliki aplikasi dengan tiga halaman: Halaman A, Halaman B, dan Halaman C. 
+	 - Jika kita menggunakan Navigator.push() dari Halaman A ke Halaman B, maka tumpukan navigasi akan menjadi A -> B. Jika Anda kemudian menggunakan Navigator.push() lagi dari Halaman B ke Halaman C, tumpukan navigasi akan menjadi A -> B -> C.
+	 - Jika kita menggunakan Navigator.pushReplacement() dari Halaman A ke Halaman B, maka tumpukan navigasi akan menjadi B. Artinya, ketika kita menekan tombol "Kembali" di Halaman B, Anda akan keluar dari aplikasi.
+	 - Selanjutnya, jika kita menggunakan Navigator.pushReplacement() dari Halaman B ke Halaman C, tumpukan navigasi akan menjadi C, dan jika Anda menekan tombol "Kembali" di Halaman C, kita akan keluar dari aplikasi.
+
+2. **Jelaskan masing-masing layout widget pada Flutter dan konteks penggunaannya masing-masing!**
+
+A. Container Widget
+untuk mengatur tampilan dan tata letak elemen-elemen dalam kotak dan mengelola tampilan dan dekorasi elemen-elemen seperti teks, gambar, atau widget lain.
+Contoh:
+Container(
+color: Colors.blue,
+child: Text('Ini adalah teks dalam Container'),
+)
+
+B. Row dan Column Widgets
+untuk mengatur elemen-elemen dalam baris (horizontal) dan kolom (vertikal) secara berurutan
+Contoh:
+Row(
+children: [
+Icon(Icons.star),
+Text('5 Stars'),
+],
+)
+
+Column(
+children: [
+Text('Judul'),
+Text('Deskripsi'),
+],
+)
+
+C. ListView Widget
+untuk mengatur elemen-elemen dalam daftar yang dapat di-scroll
+Contoh:
+ListView(
+children: [
+ListTile(title: Text('Item 1')),
+ListTile(title: Text('Item 2')),
+// ...
+],
+)
+
+d. Stack Widget
+untuk menggabungkan elemen-elemen secara tumpang tindih (berlapis) satu sama lain
+Contoh:
+Stack(
+children: [
+Image.asset('background.png'),
+Positioned(
+top: 20,
+left: 20,
+child: ElevatedButton(
+onPressed: () {},
+child: Text('Tombol'),
+),
+),
+],
+)
+
+e. GridView Widget
+mengatur elemen-elemen dalam bentuk grid (kotak) dengan baris dan kolom
+Contoh:
+GridView.builder(
+gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+crossAxisCount: 2,
+),
+itemBuilder: (context, index) {
+return Image.asset('gambar_$index.png');
+},
+)
+  
+**3. Sebutkan apa saja elemen input pada form yang kamu pakai pada tugas kali ini dan jelaskan mengapa kamu menggunakan elemen input tersebut!**
+ - TextFormField untuk nama, harga, dan deskripsi
+	Elemen input ini digunakan untuk mengambil informasi tentang nama produk, harga, dan deskripsi produk yang akan ditambahkan.
+    -   Alasan penggunaan elemen ini adalah karena kita perlu mengumpulkan data teks berupa nama produk dari pengguna, data numerik berupa harga produk dari pengguna, dan data teks berupa deskripsi produk dari pengguna. 
+    - TextFormField digunakan karena memungkinkan pengguna memasukkan teks dengan mudah dan juga menyediakan fitur validasi bawaan.
+    -
+
+**4. Bagaimana penerapan clean architecture pada aplikasi Flutter?**
+
+Penerapan Clean Architecture pada aplikasi Flutter dapat membantu memisahkan kode bisnis dari kode UI, sehingga memungkinkan pengujian yang lebih baik dan meningkatkan skalabilitas aplikasi.
+
+ - **Domain Layer**: mendefinisikan entitas, use cases (interactors), dan repositori (interfaces) yang merepresentasikan kontrak untuk mengakses data.
+ - **Data Layer**: mengimplementasikan kontrak yang didefinisikan di domain layer.
+ - **Presentation Layer**:  bertanggung jawab untuk tampilan dan UI. Termasuk widget Flutter, manajemen state (misalnya dengan provider atau Bloc), dan routing.
+ -  **Dependency Injection**: Untuk menghubungkan semua lapisan dan membantu menghubungkan use cases dari domain layer dengan widget di presentation layer.
+
+**5. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step!**
+
+-  Menambahkan Drawer Menu Untuk Navigasi
+	- membuat berkas baru left_drawer.dart
+	- melakukan routing ke MyHomePage dan ShopFormPage
+	- memasukkan drawer ke halaman menu
+- Menambahkan Form dan Elemen Input
+	- membuat berkas baru shoplist_form.dart
+	- mengubah widget Placeholder
+	- membuat variabel baru pada atribut key untuk handler dari form state, validasi form, dan penyimpanan form
+	- mengisi widget form dengan field
+	- membuat widget TextFormField untuk keperluan input data
+	- membuat button save pada form
+- Memunculkan data input
+	- menambahkan fungsi `showDialog()` pada bagian `onPressed()`
+- Menambahkan Fitur Navigasi pada Tombol
+	- menggunakan `Navigator.push()` sehingga user dapat menekan tombol back untuk kembali ke halaman menu dan  menggunakan `Navigator.pop()` sehingga dapat membuat kode dalam program untuk kembali ke halaman menu
+- Melakukan Refactoring File
+	- membuat berkas baru seperti shop_card.dart
+	- memindahkan isi widget `ShopItem` pada `menu.dart` ke shop_card.dart
+	- mengimpor halaman `shoplist_form.dart` pada berkas `shop_card.dart` dan import halaman `shop_card.dart` pada berkas `menu.dart`
+	- memindahkan
+	-  file `menu.dart` dan `shoplist_form.dart` ke dalam folder `screens`
+- Melakukan git add, commit, dan push
