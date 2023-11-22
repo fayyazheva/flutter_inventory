@@ -265,3 +265,106 @@ Penerapan Clean Architecture pada aplikasi Flutter dapat membantu memisahkan kod
 	- memindahkan
 	-  file `menu.dart` dan `shoplist_form.dart` ke dalam folder `screens`
 - Melakukan git add, commit, dan push
+
+**======================TUGAS 9==========================**
+1. **Apakah bisa kita melakukan pengambilan data JSON tanpa membuat model terlebih dahulu? Jika iya, apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON?**
+Ya,  kita bisa melakukan pengambilan data JSON tanpa membuat model terlebih dahulu. Hal ini dapat dilakukan dengan menggunakan library atau framework yang mendukung pengambilan data JSON secara langsung.
+Apakah hal tersebut lebih baik daripada membuat model sebelum melakukan pengambilan data JSON bergantung pada kebutuhan dan kompleksitas proyek yang sedang dikerjakan.
+
+Jika kita hanya perlu mengambil dan menggunakan data JSON tanpa memerlukan pemrosesan bahasa alami atau tugas yang rumit, maka tidak perlu membuat model terlebih dahulu. Namun, jika kita memerlukan pemrosesan bahasa alami atau tugas yang lebih kompleks, seperti pemahaman teks atau generasi teks, maka membuat model khusus dapat membantu dalam mengatasi tugas tersebut dengan lebih baik.
+
+**2. Jelaskan fungsi dari CookieRequest dan jelaskan mengapa  _instance_  CookieRequest perlu untuk dibagikan ke semua komponen di aplikasi Flutter.**
+ - CookieRequest adalah sebuah kelas atau objek yang digunakan dalam aplikasi Flutter untuk mengirim permintaan HTTP yang menyertakan cookie. 
+ - Cookie adalah mekanisme yang digunakan untuk menyimpan informasi pada sisi klien (misalnya, pada peramban web) dan mengirimkannya kembali ke server saat melakukan permintaan HTTP berikutnya. 
+ - CookieRequest digunakan untuk mengelola cookie yang dikirim dan diterima saat berkomunikasi dengan server.
+ - _instance_ CookieRequest perlu dibagikan ke semua komponen di aplikasi Flutter untuk mempertahankan keadaan atau status cookie yang sama di seluruh aplikasi. 
+ - Ketika kita membagikan _instance_ CookieRequest ke semua komponen, kita memastikan bahwa semua permintaan HTTP yang dilakukan oleh komponen tersebut menggunakan cookie yang sama. Hal Ini penting jika kita ingin menjaga sesi atau keadaan tertentu di server yang terkait dengan cookie.
+ - Dengan membagikan _instance_ CookieRequest, kita dapat dengan mudah mengelola cookie yang dikirim dan diterima di berbagai komponen aplikasi tanpa perlu mengulangi pengaturan cookie di setiap komponen. Hal Ini membantu dalam menjaga konsistensi dan memudahkan pengelolaan cookie dalam aplikasi Flutter kita.
+	
+**3. Jelaskan mekanisme pengambilan data dari JSON hingga dapat ditampilkan pada Flutter.**
+	-   Ambil data JSON: Gunakan metode seperti permintaan HTTP atau API untuk mengambil data JSON dari sumbernya. Kita dapat menggunakan `http` atau `dio` untuk melakukan permintaan HTTP.
+    
+ -   Analisis data JSON: Setelah mendapatkan data JSON, kita perlu menganalisisnya agar bisa digunakan dalam aplikasi Flutter. Flutter menyediakan dukungan bawaan untuk mengurai JSON dengan menggunakan paket `dart:convert`. Kita dapat menggunakan metode `jsonDecode()` untuk mengurai data JSON menjadi objek Dart yang dapat digunakan.
+    
+ -   Buat model data: Selanjutnya, kita perlu membuat model data yang sesuai dengan struktur JSON. Model data ini akan membantu kita mengorganisasi dan mengakses data dengan mudah. Kita dapat membuat kelas Dart yang mewakili struktur data JSON dengan menggunakan tipe data yang sesuai.
+    
+ -   Map data JSON ke model: Setelah memiliki model data, kita dapat menggunakan metode `fromJson()` untuk memetakan data JSON ke dalam objek model. Kita bisa mengakses nilai-nilai dalam JSON dan mengisinya ke dalam objek model yang sesuai.
+    
+ -   Tampilkan data pada Flutter: Kita dapat menggunakan objek model yang berisi data yang diambil dari JSON untuk menampilkan informasi di aplikasi Flutter. Kita dapat menggunakan widget seperti `Text`, `ListView`, atau `GridView` untuk menampilkan data tersebut pada tampilan aplikasi.
+
+**4. Jelaskan mekanisme autentikasi dari input data akun pada Flutter ke Django hingga selesainya proses autentikasi oleh Django dan tampilnya menu pada Flutter.**
+ -   Flutter: Pada sisi Flutter, kita perlu memiliki user interface untuk pengguna memasukkan informasi akun, seperti nama pengguna dan kata sandi. KIta dapat menggunakan widget Flutter seperti `TextField` untuk mengumpulkan input pengguna.
+    
+ -   Permintaan HTTP: Setelah pengguna memasukkan informasi akun, kita perlu mengirimkan permintaan HTTP dari Flutter ke server Django. Kita dapat menggunakan paket seperti `http` atau `dio` untuk melakukan permintaan HTTP POST ke endpoint autentikasi yang telah dibuat di Django.
+    
+ -   Django: Di sisi server Django, kita perlu mengimplementasikan logika autentikasi. Django menyediakan fitur autentikasi yang kuat dengan modul bawaan, seperti `django.contrib.auth`. Kita dapat menggunakan metode seperti `authenticate` untuk memeriksa kecocokan nama pengguna dan kata sandi yang diterima dari Flutter dengan data yang ada di Django.
+    
+ -   Proses autentikasi: Setelah memeriksa kecocokan nama pengguna dan kata sandi, Django akan menghasilkan token otentikasi. Kita dapat menggunakan paket seperti `django-rest-framework` untuk memudahkan implementasi autentikasi berbasis token di Django.
+    
+ -   Menyimpan token: Django akan mengirimkan token otentikasi kembali ke Flutter sebagai respons. Di sisi Flutter, kita perlu menyimpan token tersebut, misalnya di dalam penyimpanan lokal seperti `SharedPreferences` atau `SecureStorage`. Token ini akan digunakan untuk otentikasi setiap permintaan yang memerlukan akses terotentikasi ke server Django di masa mendatang.
+    
+ -   Tampilan menu: Setelah proses autentikasi selesai, kita dapat menampilkan menu atau tampilan lainnya pada Flutter. Berdasarkan status autentikasi, kita dapat menentukan apakah akan menampilkan menu utama atau tampilan lain yang sesuai.
+
+**5. Sebutkan seluruh  _widget_  yang kamu pakai pada tugas ini dan jelaskan fungsinya masing-masing.**
+
+ - File product detail berisi kode untuk halaman detail produk dalam aplikasi Flutter. Dalam halaman ini, digunakan widget seperti MaterialApp, Scaffold, AppBar, LeftDrawer, SingleChildScrollView, Column, Text, SizedBox, dan ElevatedButton.
+ - File list_product berisi kode untuk halaman daftar produk dalam aplikasi Flutter. Dalam halaman ini, digunakan widget seperti MaterialApp, Scaffold, AppBar, LeftDrawer, FutureBuilder, Center, CircularProgressIndicator, Column, Text, SizedBox, ListView.builder, GestureDetector, Container, dan ElevatedButton.
+ - File product berisi kode yang mengimpor pustaka dart:convert dan mendefinisikan fungsi dan kelas yang digunakan untuk mengonversi data JSON menjadi objek Dart dan sebaliknya. Class Product dan Fields mewakili entitas produk dan bidang produk, dengan metode fromJson dan toJson untuk konversi JSON.
+ - File login berisi kode untuk halaman login dalam aplikasi Flutter. Dalam halaman ini, digunakan widget seperti MaterialApp, Scaffold, AppBar, Container, Column, TextField, SizedBox, ElevatedButton, Text, SnackBar, AlertDialog, TextButton, Provider, pbp_django_auth, CookieRequest, Navigator, dan PageRouteBuilder. Widget ini digunakan untuk membuat tampilan login, mengelola otentikasi dengan Django, menampilkan pesan sementara, dan mengatur navigasi antar layar.
+ 
+**6. Jelaskan bagaimana cara kamu mengimplementasikan  _checklist_  di atas secara  _step-by-step_! (bukan hanya sekadar mengikuti tutorial)**
+
+ - Integrasi Autentikasi Django-Flutter
+	 (pada file django yang telah di buat sebelumnya)
+	 - membuat django-app authentication
+	 - menambahkan authentication pada  `INSTALLED_APPS`  di  `settings.py`
+	 - menjalankan pip install django-cors-headers
+	 - menambahkan  `corsheaders` ke `INSTALLED_APPS` di `settings.py`
+	 - membuat sebuah metode _view_ untuk login
+	 - membuat _file_  `urls.py` pada folder `authentication`
+	 - menambahkan routing  `path('auth/', include('authentication.urls'))`
+	 
+ - Integrasi Sistem Autentikasi pada Flutter
+	 - menginstal package
+		flutter pub add provider
+		flutter pub add pbp_django_auth
+	 - memodifikasi _root widget_ untuk menyediakan `CookieRequest`  _library_ ke semua _child widgets_ dengan menggunakan `Provider`
+	 - membuat _file_ baru pada folder `screens` dengan nama `login.dart`
+	 - mengubah `home: MyHomePage()` menjadi `home: LoginPage()` Pada _file_  `main.dart`, pada Widget `MaterialApp(...)`
+	 
+ - Pembuatan Model Kustom
+	 - membuat kode model melalui Quicktype
+	 - membuat file baru pada folder `lib/models` dengan nama `product.dart`
+	 - tempel kode yang sudah disalin dari Quicktype
+	 
+ - Penerapan Fetch Data dari Django Untuk Ditampilkan ke Flutter
+	 - Menambahkan Dependensi HTTP
+			 (pada file flutter)
+		 - Lakukan `flutter pub add http`
+		 - menambahkan kode pada file `android/app/src/main/AndroidManifest.xml`
+	 - Melakukan Fetch Data dari Django
+		 - membuat file list_product.dart
+		 - impor _library_ yang dibutuhkan dan mengisi app name sesuai proyek flutter
+		 - mengimpor file yang diperlukan
+		 - menambahkan halaman `list_product.dart` ke `widgets/left_drawer.dart`
+		 - mengubah fungsi tombol `Lihat Produk` pada halaman utama agar mengarahkan ke halaman `ProductPage`
+
+ - Integrasi Form Flutter Dengan Layanan Django
+	 (pada proyek django)
+	 - membuat sebuah fungsi _view_ baru reate_product_flutter pada `main/views.py`
+	 - menambahkan _path_ baru pada `main/urls.py`
+	 (pada proyek flutter)
+	 - menghubungkan halaman `shoplist_form.dart` dengan `CookieRequest`
+	 - melakukan _quick fix_ pada baris-baris yang bermasalah
+	 
+ - Implementasi Fitur Logout
+	 (pada proyek django)
+	 - membuat metode _view_ untuk logout pada `authentication/views.py`
+	 - menambahkan _path_ baru pada `authentication/urls.py`
+	  (pada proyek flutter)
+	 - pada _file_  `lib/widgets/shop_card.dart`, mengubah perintah `onTap: () {...}` pada widget `Inkwell` menjadi `onTap: () async {...}`
+
+	 
+
+	 
+	 

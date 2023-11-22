@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:inventory/screens/menu.dart';
 import 'package:inventory/screens/shoplist_form.dart';
-import 'package:inventory/screens/product/product_list_page.dart';
+import 'package:inventory/screens/list_product.dart';
 
 // TODO: Impor halaman ShopFormPage jika sudah dibuat
 
@@ -68,12 +68,13 @@ class LeftDrawer extends StatelessWidget {
             },
           ),
           ListTile(
-            leading: Icon(Icons.list),
-            title: Text('Daftar Produk'),
+            leading: const Icon(Icons.shopping_basket),
+            title: const Text('Daftar Produk'),
             onTap: () {
+              // Route menu ke halaman produk
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => ProductListPage()),
+                MaterialPageRoute(builder: (context) => const ProductPage()),
               );
             },
           ),
